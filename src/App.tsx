@@ -30,11 +30,17 @@ const GlobalStyle = styled.createGlobalStyle`
     html {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
             'Helvetica Neue', sans-serif;
+        height: 100%;
     }
 
     body {
         margin: 0;
         box-sizing: border-box;
+        height: 100%;
+    }
+
+    #root {
+        height: 100%;
     }
 
     button {
