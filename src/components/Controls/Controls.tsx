@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { InputBase } from '../common';
 import { Checkbox } from './Checkbox';
@@ -6,14 +6,41 @@ import { SearchBar } from './SearchBar';
 
 export const Controls = () => {
     const [fullScreen, setFullScreen] = useState(false);
+    const [searchUrl, setSearchUrl] = useState('');
+
+    const [width, setWidth] = useState('');
+    const [height, setHeight] = useState('');
+
+    const inputProps = {
+        disabled: fullScreen,
+        maxLength: 4,
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>, callback: (val: string) => void) => {
+        const { value } = e.target;
+        if (!value || /[1-9]\d*/.test(value)) {
+            callback(value);
+        }
+    };
 
     return (
         <div>
-            <SearchBar />
+            <SearchBar value={searchUrl} onChange={setSearchUrl} />
             <DetailsContainer>
                 <InputContainer>
-                    <Input placeholder='width' disabled={fullScreen} />
-                    <Input placeholder='height' disabled={fullScreen} />
+                    <Input
+                        placeholder='Width'
+                        value={width}
+                        onChange={e => handleChange(e, setWidth)}
+                        {...inputProps}
+                    />
+                    <X opacity={fullScreen ? 0.5 : 1}>x</X>
+                    <Input
+                        placeholder='Height'
+                        value={height}
+                        onChange={e => handleChange(e, setHeight)}
+                        {...inputProps}
+                    />
                 </InputContainer>
                 <Checkbox label='Full screen' checked={fullScreen} onChange={setFullScreen} />
             </DetailsContainer>
@@ -26,22 +53,30 @@ const DetailsContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 2rem;
+    height: 2.5rem;
 `;
 
 const InputContainer = styled.div``;
 
 const Input = styled(InputBase)`
-    width: 8rem;
-    height: 2rem;
+    width: 4rem;
+    height: 2.5rem;
     box-sizing: border-box;
     border-radius: 0.75rem;
-    padding: 1rem;
+    padding: 0.75rem;
     background-color: var(--input-bg);
-    margin-right: 0.25rem;
     transition: opacity 120ms ease-in-out;
+    text-align: center;
 
     &:disabled {
-        opacity: 0.75;
+        opacity: 0.5;
     }
+`;
+
+const X = styled.span<{ opacity: number }>`
+    color: var(--light-gray);
+    font-weight: 600;
+    margin: 0 0.25rem;
+    opacity: ${({ opacity }) => opacity};
+    transition: opacity 120ms ease-in-out;
 `;

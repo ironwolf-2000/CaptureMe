@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import { SearchIcon } from '../../assets/icons';
 import { InputBase } from '../common';
+import { ISearchBarProps } from './Controls.types';
 
-export const SearchBar = () => {
+export const SearchBar = ({ value, onChange }: ISearchBarProps) => {
     return (
         <Wrapper>
             <StyledSearchIcon />
-            <Input placeholder='Website URL...' />
-            <SearchButton>Search</SearchButton>
+            <Input placeholder='Website URL...' value={value} onChange={e => onChange(e.target.value)} />
+            <CaptureButton>Capture</CaptureButton>
         </Wrapper>
     );
 };
@@ -36,12 +37,12 @@ const StyledSearchIcon = styled(SearchIcon)`
     stroke: var(--primary-bg);
 `;
 
-const SearchButton = styled.button`
+const CaptureButton = styled.button`
     background-color: var(--primary-bg);
     color: var(--light-gray);
     border: none;
     border-radius: 1rem;
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
     cursor: pointer;
     font-size: 1.1rem;
     height: 100%;

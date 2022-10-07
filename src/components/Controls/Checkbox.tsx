@@ -2,13 +2,9 @@ import styled from 'styled-components';
 import { ICheckboxProps } from './Controls.types';
 
 export const Checkbox = ({ label, checked, onChange }: ICheckboxProps) => {
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange(e.target.checked);
-    };
-
     return (
         <Wrapper>
-            <CheckboxElement type='checkbox' checked={checked} onChange={handleChange} />
+            <CheckboxElement type='checkbox' checked={checked} onChange={e => onChange(e.target.checked)} />
             {label}
         </Wrapper>
     );
