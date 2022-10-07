@@ -1,38 +1,56 @@
 import styled from 'styled-components';
+import { SearchIcon } from '../../assets/icons';
+import { InputBase } from '../common';
 
 export const SearchBar = () => {
     return (
         <Wrapper>
-            <Input />
+            <StyledSearchIcon />
+            <Input placeholder='Website URL...' />
             <SearchButton>Search</SearchButton>
         </Wrapper>
     );
 };
 
 const Wrapper = styled.div`
-    background-color: var(--search-bar-bg);
+    background-color: var(--input-bg);
     width: 30rem;
     height: 4rem;
     box-sizing: border-box;
-    padding: 0.75rem;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
     display: flex;
     justify-content: space-between;
-    border-radius: 0.5rem;
+    align-items: center;
+    border-radius: 1rem;
 `;
 
-const Input = styled.input`
+const Input = styled(InputBase)`
     background: transparent;
     flex-grow: 1;
-    color: var(--text-color);
     margin-right: 1rem;
-    border: none;
+    font-size: 1.1rem;
+    padding-left: 0.5rem;
+`;
+
+const StyledSearchIcon = styled(SearchIcon)`
+    stroke: var(--primary-bg);
 `;
 
 const SearchButton = styled.button`
-    background-color: var(--button-bg);
-    color: var(--text-color);
+    background-color: var(--primary-bg);
+    color: var(--light-gray);
     border: none;
-    border-radius: 2rem;
-    padding: 0 1rem;
+    border-radius: 1rem;
+    padding: 0 1.5rem;
     cursor: pointer;
+    font-size: 1.1rem;
+    height: 100%;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
 `;

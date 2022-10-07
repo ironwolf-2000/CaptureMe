@@ -22,9 +22,9 @@ const styled = { createGlobalStyle };
 const GlobalStyle = styled.createGlobalStyle`
     :root {
         --dark-bg: #141c2f;
-        --search-bar-bg: #1f2a48;
-        --button-bg: #0378fc;
-        --text-color: #f3f5f5;
+        --input-bg: #1f2a48;
+        --primary-bg: #0378fc;
+        --light-gray: #f3f5f5;
     }
 
     html {
@@ -37,6 +37,7 @@ const GlobalStyle = styled.createGlobalStyle`
         margin: 0;
         box-sizing: border-box;
         height: 100%;
+        background: var(--dark-bg);
     }
 
     #root {
@@ -44,6 +45,6 @@ const GlobalStyle = styled.createGlobalStyle`
     }
 
     button {
-        transition: 0.3s;
+        transition: 0.2s;
     }
 `;
