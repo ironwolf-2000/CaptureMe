@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { Container, Controls, Preview } from './components';
+import { Container, Controls, PreviewModal } from './components';
 
 const App = () => {
     return (
@@ -7,7 +7,7 @@ const App = () => {
             <GlobalStyle />
             <Container>
                 <Controls />
-                <Preview />
+                <PreviewModal visible={false} />
             </Container>
         </>
     );

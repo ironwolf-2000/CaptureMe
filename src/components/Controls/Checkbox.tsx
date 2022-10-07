@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 import { ICheckboxProps } from './Controls.types';
 
-export const Checkbox = ({ label }: ICheckboxProps) => {
+export const Checkbox = ({ label, checked, onChange }: ICheckboxProps) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange(e.target.checked);
+    };
+
     return (
         <Wrapper>
-            <CheckboxElement type='checkbox' />
+            <CheckboxElement type='checkbox' checked={checked} onChange={handleChange} />
             {label}
         </Wrapper>
     );
@@ -21,6 +25,7 @@ const CheckboxElement = styled.input`
     appearance: none;
     background-color: var(--light-gray);
     margin-right: 0.25rem;
+    cursor: pointer;
 
     width: 1.5rem;
     height: 1.5rem;

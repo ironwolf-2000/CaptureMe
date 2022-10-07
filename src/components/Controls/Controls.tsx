@@ -1,18 +1,21 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { InputBase } from '../common';
 import { Checkbox } from './Checkbox';
 import { SearchBar } from './SearchBar';
 
 export const Controls = () => {
+    const [fullScreen, setFullScreen] = useState(false);
+
     return (
         <div>
             <SearchBar />
             <DetailsContainer>
                 <InputContainer>
-                    <Input placeholder='width' />
-                    <Input placeholder='height' />
+                    <Input placeholder='width' disabled={fullScreen} />
+                    <Input placeholder='height' disabled={fullScreen} />
                 </InputContainer>
-                <Checkbox label='Full screen' />
+                <Checkbox label='Full screen' checked={fullScreen} onChange={setFullScreen} />
             </DetailsContainer>
         </div>
     );
@@ -36,4 +39,9 @@ const Input = styled(InputBase)`
     padding: 1rem;
     background-color: var(--input-bg);
     margin-right: 0.25rem;
+    transition: opacity 120ms ease-in-out;
+
+    &:disabled {
+        opacity: 0.75;
+    }
 `;
