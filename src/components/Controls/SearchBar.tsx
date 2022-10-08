@@ -3,12 +3,12 @@ import { SearchIcon } from '../../assets/icons';
 import { InputBase } from '../common';
 import { ISearchBarProps } from './Controls.types';
 
-export const SearchBar = ({ value, onChange }: ISearchBarProps) => {
+export const SearchBar = ({ value, onChange, onCapture }: ISearchBarProps) => {
     return (
         <Wrapper>
             <StyledSearchIcon />
             <Input placeholder='Website URL...' value={value} onChange={e => onChange(e.target.value)} />
-            <CaptureButton>Capture</CaptureButton>
+            <CaptureButton onClick={onCapture}>Capture</CaptureButton>
         </Wrapper>
     );
 };

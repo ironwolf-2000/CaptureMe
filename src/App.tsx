@@ -1,13 +1,27 @@
+import { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { Container, Controls, PreviewModal } from './components';
+import { ScreenshotService } from './services/ScreenshotService';
+import { isValidUrl } from './utils';
 
 const App = () => {
+    const [imageSrc, setImageSrc] = useState<string>('');
+
+    const handleCapture = async (urlString: string, fullScreen: boolean, width?: number, height?: number) => {
+        if (isValidUrl(urlString)) {
+            const src = await ScreenshotService.loadScreenshot(urlString, fullScreen, Number(width), Number(height));
+            setImageSrc(src);
+        } else {
+            console.log('invalid url');
+        }
+    };
+
     return (
         <>
             <GlobalStyle />
             <Container>
-                <Controls />
-                <PreviewModal visible={false} />
+                <Controls onCapture={handleCapture} />
+                <PreviewModal visible={false} imageSrc={imageSrc} />
             </Container>
         </>
     );

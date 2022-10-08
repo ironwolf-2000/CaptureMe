@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { InputBase } from '../common';
+
+import { IControlsProps } from './Controls.types';
 import { Checkbox } from './Checkbox';
+import { InputBase } from '../common';
 import { SearchBar } from './SearchBar';
 
-export const Controls = () => {
+export const Controls = ({ onCapture }: IControlsProps) => {
     const [fullScreen, setFullScreen] = useState(false);
-    const [searchUrl, setSearchUrl] = useState('');
+    const [urlString, setUrlString] = useState('');
 
     const [width, setWidth] = useState('');
     const [height, setHeight] = useState('');
@@ -25,7 +27,11 @@ export const Controls = () => {
 
     return (
         <div>
-            <SearchBar value={searchUrl} onChange={setSearchUrl} />
+            <SearchBar
+                value={urlString}
+                onChange={setUrlString}
+                onCapture={() => onCapture(urlString, fullScreen, Number(width), Number(height))}
+            />
             <DetailsContainer>
                 <InputContainer>
                     <Input
