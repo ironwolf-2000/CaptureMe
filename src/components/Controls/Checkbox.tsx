@@ -43,4 +43,8 @@ const CheckboxElement = styled.input`
     &:checked::before {
         transform: scale(1);
     }
+
+    &:focus-visible {
+        outline: 0.125rem dashed var(--light-gray);
+    }
 `;

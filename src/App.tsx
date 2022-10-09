@@ -57,8 +57,4 @@ const GlobalStyle = styled.createGlobalStyle`
     #root {
         height: 100%;
     }
-
-    button {
-        transition: 0.2s;
-    }
 `;

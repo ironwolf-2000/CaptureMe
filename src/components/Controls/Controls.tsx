@@ -38,6 +38,7 @@ export const Controls = ({ onCapture }: IControlsProps) => {
                         placeholder='Width'
                         value={width}
                         onChange={e => handleChange(e, setWidth)}
+                        aria-label='width'
                         {...inputProps}
                     />
                     <X opacity={fullScreen ? 0.5 : 1}>x</X>
@@ -45,6 +46,7 @@ export const Controls = ({ onCapture }: IControlsProps) => {
                         placeholder='Height'
                         value={height}
                         onChange={e => handleChange(e, setHeight)}
+                        aria-label='height'
                         {...inputProps}
                     />
                 </InputContainer>
