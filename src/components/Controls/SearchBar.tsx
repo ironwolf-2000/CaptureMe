@@ -3,15 +3,17 @@ import { SearchIcon } from '../../assets/icons';
 import { InputBase } from '../common';
 import { ISearchBarProps } from './Controls.types';
 
-export const SearchBar = ({ value, onChange, onCapture }: ISearchBarProps) => {
+export const SearchBar = ({ value, hasError, onChange, onFocus, onCapture }: ISearchBarProps) => {
     return (
         <Wrapper>
             <StyledSearchIcon />
             <Input
-                placeholder='Website URL...'
+                placeholder={hasError ? 'Invalid URL' : 'Website URL...'}
                 aria-label='website url'
-                value={value}
+                hasError={hasError}
+                value={hasError ? '' : value}
                 onChange={e => onChange(e.target.value)}
+                onFocus={onFocus}
             />
             <CaptureButton onClick={onCapture}>Capture</CaptureButton>
         </Wrapper>
@@ -30,12 +32,17 @@ const Wrapper = styled.div`
     border-radius: 1rem;
 `;
 
-const Input = styled(InputBase)`
+const Input = styled(InputBase)<{ hasError: boolean }>`
     background: transparent;
     flex-grow: 1;
     margin-right: 1rem;
     font-size: 1.1rem;
     padding: 0.5rem;
+
+    &::placeholder {
+        color: ${({ hasError }) => (hasError ? 'var(--error-color)' : 'var(--light-gray)')};
+        opacity: 1;
+    }
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`

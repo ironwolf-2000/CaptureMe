@@ -6,13 +6,14 @@ import { isValidUrl } from './utils';
 
 const App = () => {
     const [imageSrc, setImageSrc] = useState<string>('');
+    const [isInvalidUrl, setIsInvalidUrl] = useState(false);
 
     const handleCapture = async (urlString: string, fullScreen: boolean, width?: number, height?: number) => {
         if (isValidUrl(urlString)) {
             const src = await ScreenshotService.loadScreenshot(urlString, fullScreen, Number(width), Number(height));
             setImageSrc(src);
         } else {
-            console.log('invalid url');
+            setIsInvalidUrl(true);
         }
     };
 
@@ -20,7 +21,7 @@ const App = () => {
         <>
             <GlobalStyle />
             <Container>
-                <Controls onCapture={handleCapture} />
+                <Controls onCapture={handleCapture} isInvalidUrl={isInvalidUrl} setIsInvalidUrl={setIsInvalidUrl} />
                 <PreviewModal visible={false} imageSrc={imageSrc} />
             </Container>
         </>
@@ -39,6 +40,7 @@ const GlobalStyle = styled.createGlobalStyle`
         --input-bg: #1f2a48;
         --primary-bg: #0378fc;
         --light-gray: #f3f5f5;
+        --error-color: #df2935;
     }
 
     html {

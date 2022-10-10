@@ -6,7 +6,7 @@ import { Checkbox } from './Checkbox';
 import { InputBase } from '../common';
 import { SearchBar } from './SearchBar';
 
-export const Controls = ({ onCapture }: IControlsProps) => {
+export const Controls = ({ isInvalidUrl, setIsInvalidUrl, onCapture }: IControlsProps) => {
     const [fullScreen, setFullScreen] = useState(false);
     const [urlString, setUrlString] = useState('');
 
@@ -18,26 +18,38 @@ export const Controls = ({ onCapture }: IControlsProps) => {
         maxLength: 4,
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>, callback: (val: string) => void) => {
+    const handleDimensionsChange = (e: React.ChangeEvent<HTMLInputElement>, callback: (val: string) => void) => {
         const { value } = e.target;
         if (!value || /[1-9]\d*/.test(value)) {
             callback(value);
         }
     };
 
+    const handleUrlChange = (value: string) => {
+        setUrlString(value);
+        setIsInvalidUrl(false);
+    };
+
+    const handleCapture = () => {
+        setUrlString('');
+        onCapture(urlString, fullScreen, Number(width), Number(height));
+    };
+
     return (
         <div>
             <SearchBar
                 value={urlString}
-                onChange={setUrlString}
-                onCapture={() => onCapture(urlString, fullScreen, Number(width), Number(height))}
+                hasError={isInvalidUrl}
+                onChange={handleUrlChange}
+                onFocus={() => setIsInvalidUrl(false)}
+                onCapture={handleCapture}
             />
             <DetailsContainer>
                 <InputContainer>
                     <Input
                         placeholder='Width'
                         value={width}
-                        onChange={e => handleChange(e, setWidth)}
+                        onChange={e => handleDimensionsChange(e, setWidth)}
                         aria-label='width'
                         {...inputProps}
                     />
@@ -45,7 +57,7 @@ export const Controls = ({ onCapture }: IControlsProps) => {
                     <Input
                         placeholder='Height'
                         value={height}
-                        onChange={e => handleChange(e, setHeight)}
+                        onChange={e => handleDimensionsChange(e, setHeight)}
                         aria-label='height'
                         {...inputProps}
                     />
