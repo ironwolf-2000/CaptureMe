@@ -2,16 +2,26 @@ import { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import { Container, Controls, PreviewModal } from './components';
 import { ScreenshotService } from './services/ScreenshotService';
-import { isValidUrl } from './utils';
+import { downloadImage, isValidUrl } from './utils';
 
 const App = () => {
     const [imageSrc, setImageSrc] = useState<string>('');
     const [isInvalidUrl, setIsInvalidUrl] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleCapture = async (urlString: string, fullScreen: boolean, width?: number, height?: number) => {
         if (isValidUrl(urlString)) {
-            const src = await ScreenshotService.loadScreenshot(urlString, fullScreen, Number(width), Number(height));
-            setImageSrc(src);
+            setLoading(true);
+            try {
+                const src = await ScreenshotService.loadScreenshot(urlString, fullScreen, width, height);
+                setImageSrc(src);
+                setModalVisible(true);
+            } catch (error) {
+                setIsInvalidUrl(true);
+            } finally {
+                setLoading(false);
+            }
         } else {
             setIsInvalidUrl(true);
         }
@@ -21,8 +31,18 @@ const App = () => {
         <>
             <GlobalStyle />
             <Container>
-                <Controls onCapture={handleCapture} isInvalidUrl={isInvalidUrl} setIsInvalidUrl={setIsInvalidUrl} />
-                <PreviewModal visible={false} imageSrc={imageSrc} />
+                <Controls
+                    loading={loading}
+                    onCapture={handleCapture}
+                    isInvalidUrl={isInvalidUrl}
+                    setIsInvalidUrl={setIsInvalidUrl}
+                />
+                <PreviewModal
+                    visible={modalVisible}
+                    imageSrc={imageSrc}
+                    onClose={() => setModalVisible(false)}
+                    onDownload={() => downloadImage(imageSrc)}
+                />
             </Container>
         </>
     );
@@ -36,8 +56,8 @@ const styled = { createGlobalStyle };
 
 const GlobalStyle = styled.createGlobalStyle`
     :root {
-        --dark-bg: #141c2f;
-        --input-bg: #1f2a48;
+        --dark-bg: #1f2b47;
+        --input-bg: #253356;
         --primary-bg: #0378fc;
         --light-gray: #f3f5f5;
         --error-color: #df2935;

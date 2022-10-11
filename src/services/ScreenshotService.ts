@@ -14,7 +14,7 @@ export class ScreenshotService {
     ): Promise<string> => {
         const params = {
             ...{
-                access_key: process.env.REACT_APP_API_ACCESS_KEY,
+                access_key: process.env.REACT_APP_API_KEY,
                 url,
             },
             ...(fullScreen ? { full_page: true } : { width, height }),

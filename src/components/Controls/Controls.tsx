@@ -6,7 +6,7 @@ import { Checkbox } from './Checkbox';
 import { InputBase } from '../common';
 import { SearchBar } from './SearchBar';
 
-export const Controls = ({ isInvalidUrl, setIsInvalidUrl, onCapture }: IControlsProps) => {
+export const Controls = ({ loading, isInvalidUrl, setIsInvalidUrl, onCapture }: IControlsProps) => {
     const [fullScreen, setFullScreen] = useState(false);
     const [urlString, setUrlString] = useState('');
 
@@ -14,7 +14,7 @@ export const Controls = ({ isInvalidUrl, setIsInvalidUrl, onCapture }: IControls
     const [height, setHeight] = useState('');
 
     const inputProps = {
-        disabled: fullScreen,
+        disabled: fullScreen || loading,
         maxLength: 4,
     };
 
@@ -30,14 +30,15 @@ export const Controls = ({ isInvalidUrl, setIsInvalidUrl, onCapture }: IControls
         setIsInvalidUrl(false);
     };
 
-    const handleCapture = () => {
+    const handleCapture = async () => {
+        await onCapture(urlString, fullScreen, width ? Number(width) : undefined, height ? Number(height) : undefined);
         setUrlString('');
-        onCapture(urlString, fullScreen, Number(width), Number(height));
     };
 
     return (
         <div>
             <SearchBar
+                loading={loading}
                 value={urlString}
                 hasError={isInvalidUrl}
                 onChange={handleUrlChange}
@@ -62,7 +63,7 @@ export const Controls = ({ isInvalidUrl, setIsInvalidUrl, onCapture }: IControls
                         {...inputProps}
                     />
                 </InputContainer>
-                <Checkbox label='Full screen' checked={fullScreen} onChange={setFullScreen} />
+                <Checkbox label='Full screen' checked={fullScreen} onChange={setFullScreen} disabled={loading} />
             </DetailsContainer>
         </div>
     );

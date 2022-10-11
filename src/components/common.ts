@@ -10,3 +10,9 @@ export const InputBase = styled.input`
         opacity: 0.75;
     }
 `;
+
+export const ButtonBase = styled.button`
+    border: none;
+    outline: none;
+    cursor: pointer;
+`;

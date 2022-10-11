@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { ICheckboxProps } from './Controls.types';
 
-export const Checkbox = ({ label, checked, onChange }: ICheckboxProps) => {
+export const Checkbox = ({ label, onChange, ...props }: ICheckboxProps) => {
     return (
         <Wrapper>
-            <CheckboxElement type='checkbox' checked={checked} onChange={e => onChange(e.target.checked)} />
+            <CheckboxElement type='checkbox' onChange={e => onChange(e.target.checked)} {...props} />
             {label}
         </Wrapper>
     );
