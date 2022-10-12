@@ -25,7 +25,6 @@ export const SearchBar = ({ value, hasError, loading, onChange, onFocus, onCaptu
 
 const Wrapper = styled.div`
     background-color: var(--input-bg);
-    width: 30rem;
     height: 4rem;
     box-sizing: border-box;
     padding: 0.5rem 0.5rem 0.5rem 1.25rem;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { Container, Controls, PreviewModal } from './components';
+import { Body, Controls, Header, PreviewModal } from './components';
 import { ScreenshotService } from './services/ScreenshotService';
 import { downloadImage, isValidUrl } from './utils';
 
@@ -30,7 +30,8 @@ const App = () => {
     return (
         <>
             <GlobalStyle />
-            <Container>
+            <Header />
+            <Body>
                 <Controls
                     loading={loading}
                     onCapture={handleCapture}
@@ -43,7 +44,7 @@ const App = () => {
                     onClose={() => setModalVisible(false)}
                     onDownload={() => downloadImage(imageSrc)}
                 />
-            </Container>
+            </Body>
         </>
     );
 };
@@ -78,5 +79,11 @@ const GlobalStyle = styled.createGlobalStyle`
 
     #root {
         height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 5%;
     }
 `;

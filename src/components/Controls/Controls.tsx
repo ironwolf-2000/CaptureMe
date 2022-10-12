@@ -36,7 +36,7 @@ export const Controls = ({ loading, isInvalidUrl, setIsInvalidUrl, onCapture }: 
     };
 
     return (
-        <div>
+        <Wrapper>
             <SearchBar
                 loading={loading}
                 value={urlString}
@@ -65,9 +65,13 @@ export const Controls = ({ loading, isInvalidUrl, setIsInvalidUrl, onCapture }: 
                 </InputContainer>
                 <Checkbox label='Full screen' checked={fullScreen} onChange={setFullScreen} disabled={loading} />
             </DetailsContainer>
-        </div>
+        </Wrapper>
     );
 };
+
+const Wrapper = styled.div`
+    width: 100%;
+`;
 
 const DetailsContainer = styled.div`
     margin-top: 0.25rem;

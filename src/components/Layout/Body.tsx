@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { IContainerProps } from './Container.types';
+import { IBodyProps } from './Layout.types';
 
-export const Container = ({ children }: IContainerProps) => {
+export const Body = ({ children }: IBodyProps) => {
     return <Wrapper>{children}</Wrapper>;
 };
 
 const Wrapper = styled.main`
-    height: 100%;
+    width: 30rem;
     display: flex;
     justify-content: center;
     align-items: center;
