@@ -74,7 +74,7 @@ const Wrapper = styled.div`
 `;
 
 const DetailsContainer = styled.div`
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,7 +89,7 @@ const Input = styled(InputBase)`
     box-sizing: border-box;
     border-radius: 0.75rem;
     padding: 0.75rem;
-    background-color: var(--input-bg);
+    background-color: ${({ theme }) => theme.elementsBg};
     transition: opacity 120ms ease-in-out;
     text-align: center;
 
@@ -99,7 +99,7 @@ const Input = styled(InputBase)`
 `;
 
 const X = styled.span<{ opacity: number }>`
-    color: var(--light-gray);
+    color: ${({ theme }) => theme.text};
     font-weight: 600;
     margin: 0 0.25rem;
     opacity: ${({ opacity }) => opacity};

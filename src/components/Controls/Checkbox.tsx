@@ -13,13 +13,13 @@ export const Checkbox = ({ label, onChange, ...props }: ICheckboxProps) => {
 const Wrapper = styled.label`
     display: flex;
     align-items: center;
-    color: var(--light-gray);
+    color: ${({ theme }) => theme.text};
     cursor: pointer;
 `;
 
 const CheckboxElement = styled.input`
     appearance: none;
-    background-color: var(--light-gray);
+    background-color: ${({ theme }) => theme.text};
     margin-right: 0.25rem;
     cursor: pointer;
 
@@ -37,7 +37,7 @@ const CheckboxElement = styled.input`
         border-radius: 0.25rem;
         transform: scale(0);
         transition: transform 120ms ease-in-out;
-        background-color: var(--primary-bg);
+        background-color: ${({ theme }) => theme.action};
     }
 
     &:checked::before {
@@ -45,6 +45,6 @@ const CheckboxElement = styled.input`
     }
 
     &:focus-visible {
-        outline: 0.125rem dashed var(--light-gray);
+        outline: 0.125rem dashed ${({ theme }) => theme.text};
     }
 `;

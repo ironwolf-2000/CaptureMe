@@ -24,7 +24,7 @@ export const SearchBar = ({ value, hasError, loading, onChange, onFocus, onCaptu
 };
 
 const Wrapper = styled.div`
-    background-color: var(--input-bg);
+    background-color: ${({ theme }) => theme.elementsBg};
     height: 4rem;
     box-sizing: border-box;
     padding: 0.5rem 0.5rem 0.5rem 1.25rem;
@@ -42,13 +42,13 @@ const Input = styled(InputBase)<{ hasError: boolean }>`
     padding: 0.5rem;
 
     &::placeholder {
-        color: ${({ hasError }) => (hasError ? 'var(--error-color)' : 'var(--light-gray)')};
+        color: ${({ theme, hasError }) => (hasError ? theme.error : theme.text)};
         opacity: 1;
     }
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
-    stroke: var(--primary-bg);
+    stroke: ${({ theme }) => theme.text};
     margin-right: 0.5rem;
 `;
 
@@ -64,8 +64,8 @@ const load = keyframes`
 
 const CaptureButton = styled(ButtonBase)`
     position: relative;
-    background-color: var(--primary-bg);
-    color: var(--light-gray);
+    background-color: ${({ theme }) => theme.action};
+    color: ${({ theme }) => theme.text};
     height: 100%;
     font-size: 1.1rem;
     border-radius: 1rem;
@@ -87,8 +87,8 @@ const CaptureButton = styled(ButtonBase)`
                 -60deg,
                 transparent,
                 transparent 0.75rem,
-                #3592fd 0.75rem,
-                #3592fd 1.5rem
+                ${({ theme }) => theme.buttonOverlay} 0.75rem,
+                ${({ theme }) => theme.buttonOverlay} 1.5rem
             );
             animation: ${load} 1s infinite linear;
         }
@@ -104,7 +104,7 @@ const CaptureButton = styled(ButtonBase)`
         }
 
         &:focus-visible {
-            outline: 0.125rem dashed var(--light-gray);
+            outline: 0.125rem dashed ${({ theme }) => theme.text};
         }
     }
 `;

@@ -56,7 +56,7 @@ const Wrapper = styled.div`
 `;
 
 const ModalContent = styled.div`
-    background-color: var(--dark-bg);
+    background-color: ${({ theme }) => theme.bodyBg};
     border-radius: 1rem;
 `;
 
@@ -65,7 +65,7 @@ const ModalHeader = styled.div`
 `;
 
 const Heading = styled.h2`
-    color: var(--light-gray);
+    color: ${({ theme }) => theme.text};
     margin: 0;
 `;
 
@@ -110,17 +110,17 @@ const ButtonClose = styled(ButtonBase)`
     border-radius: 1rem;
     padding: 0 1rem;
     background-color: transparent;
-    color: var(--light-gray);
-    border: 0.1rem solid var(--light-gray);
+    color: ${({ theme }) => theme.text};
+    border: 0.1rem solid ${({ theme }) => theme.text};
     transition: color 0.2s, background-color 0.2s;
 
     &:hover {
-        background-color: var(--light-gray);
+        background-color: ${({ theme }) => theme.text};
         color: var(--dark-bg);
     }
 
     &:focus-visible {
-        outline: 0.125rem dashed var(--light-gray);
+        outline: 0.125rem dashed ${({ theme }) => theme.text};
     }
 `;
 
@@ -129,8 +129,8 @@ const ButtonDownload = styled(ButtonBase)`
     margin-left: 0.5rem;
     border-radius: 1rem;
     padding: 0 1rem;
-    background-color: var(--primary-bg);
-    color: var(--light-gray);
+    background-color: ${({ theme }) => theme.action};
+    color: ${({ theme }) => theme.text};
     transition: opacity 0.2s;
 
     &:hover {
@@ -142,6 +142,6 @@ const ButtonDownload = styled(ButtonBase)`
     }
 
     &:focus-visible {
-        outline: 0.125rem dashed var(--light-gray);
+        outline: 0.125rem dashed ${({ theme }) => theme.text};
     }
 `;

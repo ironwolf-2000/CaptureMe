@@ -18,5 +18,5 @@ const Wrapper = styled.header`
 `;
 
 const Heading = styled.h1`
-    color: var(--light-gray);
+    color: ${({ theme }) => theme.text};
 `;

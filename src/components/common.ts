@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const InputBase = styled.input`
-    color: var(--light-gray);
+    color: ${({ theme }) => theme.text};
     border: none;
     outline: none;
 
     &::placeholder {
-        color: var(--light-gray);
+        color: ${({ theme }) => theme.text};
         opacity: 0.75;
     }
 `;

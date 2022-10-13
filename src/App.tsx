@@ -1,13 +1,17 @@
 import { useState } from 'react';
-import { createGlobalStyle } from 'styled-components';
-import { Body, Controls, Header, PreviewModal } from './components';
 import { ScreenshotService } from './services/ScreenshotService';
+import { Body, Controls, Header, PreviewModal } from './components';
 import { downloadImage, isValidUrl } from './utils';
+import { darkTheme, GlobalStyle, lightTheme } from './assets/styles';
+import { ThemeProvider } from 'styled-components';
+import { Theme } from './components/ThemeSwitch/ThemeSwitch.types';
 
 const App = () => {
     const [imageSrc, setImageSrc] = useState<string>('');
     const [isInvalidUrl, setIsInvalidUrl] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
+
+    const [theme, setTheme] = useState(Theme.Dark);
     const [loading, setLoading] = useState(false);
 
     const handleCapture = async (urlString: string, fullScreen: boolean, width?: number, height?: number) => {
@@ -28,7 +32,7 @@ const App = () => {
     };
 
     return (
-        <>
+        <ThemeProvider theme={theme === Theme.Dark ? darkTheme : lightTheme}>
             <GlobalStyle />
             <Header />
             <Body>
@@ -45,45 +49,8 @@ const App = () => {
                     onDownload={() => downloadImage(imageSrc)}
                 />
             </Body>
-        </>
+        </ThemeProvider>
     );
 };
 
 export default App;
-
-// Prettier doesn't format createGlobalStyle
-// https://github.com/prettier/prettier/issues/11196#issuecomment-951878725
-const styled = { createGlobalStyle };
-
-const GlobalStyle = styled.createGlobalStyle`
-    :root {
-        --dark-bg: #1f2b47;
-        --input-bg: #253356;
-        --primary-bg: #0378fc;
-        --light-gray: #f3f5f5;
-        --error-color: #df2935;
-    }
-
-    html {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-            'Helvetica Neue', sans-serif;
-        height: 100%;
-    }
-
-    body {
-        margin: 0;
-        box-sizing: border-box;
-        height: 100%;
-        background: var(--dark-bg);
-    }
-
-    #root {
-        height: 100%;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 5%;
-    }
-`;
