@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { DownloadIcon } from '../../assets/icons';
 import { ButtonBase } from '../common';
 import { IImageDimensions, IPreviewModalProps } from './PreviewModal.types';
 
@@ -36,7 +37,10 @@ export const PreviewModal = ({ visible, imageSrc, onClose, onDownload }: IPrevie
                 </ModalBody>
                 <ModalFooter>
                     <ButtonClose onClick={onClose}>Close</ButtonClose>
-                    <ButtonDownload onClick={onDownload}>Download</ButtonDownload>
+                    <ButtonDownload onClick={onDownload}>
+                        Download
+                        <StyledDownloadIcon />
+                    </ButtonDownload>
                 </ModalFooter>
             </ModalContent>
         </Wrapper>
@@ -100,7 +104,7 @@ const Image = styled.img`
 `;
 
 const ModalFooter = styled.div`
-    height: 2rem;
+    height: 2.25rem;
     padding: 1.5rem;
     display: flex;
     justify-content: flex-end;
@@ -108,7 +112,7 @@ const ModalFooter = styled.div`
 
 const ButtonClose = styled(ButtonBase)`
     height: 100%;
-    border-radius: 1rem;
+    border-radius: 1.25rem;
     padding: 0 1rem;
     background-color: transparent;
     color: ${({ theme }) => theme.text};
@@ -128,11 +132,13 @@ const ButtonClose = styled(ButtonBase)`
 const ButtonDownload = styled(ButtonBase)`
     height: 100%;
     margin-left: 0.5rem;
-    border-radius: 1rem;
-    padding: 0 1rem;
+    border-radius: 1.25rem;
+    padding: 0 0.75rem 0 1rem;
     background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.lightGray};
     transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
 
     &:hover {
         opacity: 0.9;
@@ -145,4 +151,11 @@ const ButtonDownload = styled(ButtonBase)`
     &:focus-visible {
         outline: 0.125rem dashed ${({ theme }) => theme.text};
     }
+`;
+
+const StyledDownloadIcon = styled(DownloadIcon)`
+    stroke: ${({ theme }) => theme.lightGray};
+    margin-left: 0.25rem;
+    margin-bottom: 0.1rem;
+    height: 1rem;
 `;
