@@ -34,7 +34,7 @@ const App = () => {
     return (
         <ThemeProvider theme={theme === Theme.Dark ? darkTheme : lightTheme}>
             <GlobalStyle />
-            <Header />
+            <Header theme={theme} onThemeChange={setTheme} />
             <Body>
                 <Controls
                     loading={loading}

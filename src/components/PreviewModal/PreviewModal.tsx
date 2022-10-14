@@ -56,7 +56,7 @@ const Wrapper = styled.div`
 `;
 
 const ModalContent = styled.div`
-    background-color: ${({ theme }) => theme.bodyBg};
+    background-color: ${({ theme }) => theme.body};
     border-radius: 1rem;
 `;
 
@@ -82,6 +82,7 @@ const ImageContainer = styled.div`
     border-radius: 1rem;
     max-height: 60vh;
     overflow: auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.125rem 0.375rem;
 
     /* Hide scrollbar for Chrome, Safari and Opera */
     &::-webkit-scrollbar {
@@ -116,7 +117,7 @@ const ButtonClose = styled(ButtonBase)`
 
     &:hover {
         background-color: ${({ theme }) => theme.text};
-        color: var(--dark-bg);
+        color: ${({ theme }) => theme.body};
     }
 
     &:focus-visible {
@@ -129,8 +130,8 @@ const ButtonDownload = styled(ButtonBase)`
     margin-left: 0.5rem;
     border-radius: 1rem;
     padding: 0 1rem;
-    background-color: ${({ theme }) => theme.action};
-    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.lightGray};
     transition: opacity 0.2s;
 
     &:hover {

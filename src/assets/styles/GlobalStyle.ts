@@ -11,8 +11,7 @@ export const GlobalStyle = createGlobalStyle<ThemeProps<Record<string, string>>>
         margin: 0;
         box-sizing: border-box;
         height: 100%;
-        background: ${({ theme }) => theme.bodyBg};
-        transition: all 0.5s linear;
+        background: ${({ theme }) => theme.body};
     }
 
     #root {
@@ -22,6 +21,5 @@ export const GlobalStyle = createGlobalStyle<ThemeProps<Record<string, string>>>
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-bottom: 5%;
     }
 `;

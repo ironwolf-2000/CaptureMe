@@ -1,5 +1,10 @@
-interface ILayoutProps {
+import { Theme } from '../ThemeSwitch/ThemeSwitch.types';
+
+export interface IBodyProps {
     children: React.ReactNode;
 }
 
-export type IBodyProps = ILayoutProps;
+export interface IHeaderProps {
+    theme: Theme;
+    onThemeChange: (theme: Theme) => void;
+}

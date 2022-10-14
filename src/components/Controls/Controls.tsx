@@ -89,12 +89,14 @@ const Input = styled(InputBase)`
     box-sizing: border-box;
     border-radius: 0.75rem;
     padding: 0.75rem;
-    background-color: ${({ theme }) => theme.elementsBg};
-    transition: opacity 120ms ease-in-out;
+    background-color: ${({ theme }) => theme.elements};
+    transition: opacity 120ms ease-in-out, box-shadow 120ms ease-in-out;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.25rem 0.75rem;
 
     &:disabled {
         opacity: 0.5;
+        box-shadow: none;
     }
 `;
 

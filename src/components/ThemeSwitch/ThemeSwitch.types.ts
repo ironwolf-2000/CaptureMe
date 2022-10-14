@@ -1,4 +1,9 @@
 export enum Theme {
-    Dark,
-    Light,
+    Dark = 'Dark',
+    Light = 'Light',
+}
+
+export interface IThemeSwitchProps {
+    theme: Theme;
+    onChange: (theme: Theme) => void;
 }

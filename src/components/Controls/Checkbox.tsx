@@ -19,9 +19,11 @@ const Wrapper = styled.label`
 
 const CheckboxElement = styled.input`
     appearance: none;
-    background-color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.lightGray};
     margin-right: 0.25rem;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.25rem 0.75rem;
+    border: ${({ theme }) => theme.checkboxBorder};
 
     width: 1.5rem;
     height: 1.5rem;
@@ -37,7 +39,7 @@ const CheckboxElement = styled.input`
         border-radius: 0.25rem;
         transform: scale(0);
         transition: transform 120ms ease-in-out;
-        background-color: ${({ theme }) => theme.action};
+        background-color: ${({ theme }) => theme.primary};
     }
 
     &:checked::before {

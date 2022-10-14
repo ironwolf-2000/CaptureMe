@@ -24,7 +24,7 @@ export const SearchBar = ({ value, hasError, loading, onChange, onFocus, onCaptu
 };
 
 const Wrapper = styled.div`
-    background-color: ${({ theme }) => theme.elementsBg};
+    background-color: ${({ theme }) => theme.elements};
     height: 4rem;
     box-sizing: border-box;
     padding: 0.5rem 0.5rem 0.5rem 1.25rem;
@@ -32,6 +32,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0.25rem 0.75rem;
 `;
 
 const Input = styled(InputBase)<{ hasError: boolean }>`
@@ -48,7 +49,7 @@ const Input = styled(InputBase)<{ hasError: boolean }>`
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
-    stroke: ${({ theme }) => theme.text};
+    stroke: ${({ theme }) => theme.primary};
     margin-right: 0.5rem;
 `;
 
@@ -64,8 +65,8 @@ const load = keyframes`
 
 const CaptureButton = styled(ButtonBase)`
     position: relative;
-    background-color: ${({ theme }) => theme.action};
-    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.lightGray};
     height: 100%;
     font-size: 1.1rem;
     border-radius: 1rem;
@@ -87,8 +88,8 @@ const CaptureButton = styled(ButtonBase)`
                 -60deg,
                 transparent,
                 transparent 0.75rem,
-                ${({ theme }) => theme.buttonOverlay} 0.75rem,
-                ${({ theme }) => theme.buttonOverlay} 1.5rem
+                ${({ theme }) => theme.primaryOverlay} 0.75rem,
+                ${({ theme }) => theme.primaryOverlay} 1.5rem
             );
             animation: ${load} 1s infinite linear;
         }

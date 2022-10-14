@@ -1,21 +1,24 @@
-export const darkTheme = {
-    // common
-    bodyBg: '#1f2b47',
-    elementsBg: '#253356',
-    text: '#f3f5f5',
-    action: '#0378fc',
+const common = {
+    primary: '#0378fc',
+    primaryOverlay: '#3592fd',
+    lightGray: '#f3f5f5',
     error: '#df2935',
-    // specific
-    buttonOverlay: '#3592fd',
+};
+
+export const darkTheme = {
+    ...common,
+    body: '#1f2b47',
+    elements: '#253455',
+    text: '#f3f5f5',
+    // non-color styles
+    checkboxBorder: 'none',
 };
 
 export const lightTheme = {
-    // common
-    bodyBg: '#ffffff',
-    elementsBg: '#253356',
-    text: '#f3f5f5',
-    action: '#0378fc',
-    error: '#df2935',
-    // specific
-    buttonOverlay: '#3592fd',
+    ...common,
+    body: '#f5f8ff',
+    elements: '#fefefe',
+    text: '#45484f',
+    // non-color styles
+    checkboxBorder: '0.1rem solid rgba(0, 0, 0, 0.125)',
 };
