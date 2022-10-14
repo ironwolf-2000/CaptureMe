@@ -1,4 +1,4 @@
-import { Theme } from '../ThemeSwitch/ThemeSwitch.types';
+import { Theme } from '../ThemeToggle/ThemeToggle.types';
 
 export interface IBodyProps {
     children: React.ReactNode;

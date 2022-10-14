@@ -3,7 +3,7 @@ export enum Theme {
     Light = 'Light',
 }
 
-export interface IThemeSwitchProps {
+export interface IThemeToggleProps {
     theme: Theme;
     onChange: (theme: Theme) => void;
 }

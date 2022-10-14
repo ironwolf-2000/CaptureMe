@@ -1,18 +1,20 @@
 import styled from 'styled-components';
-import { ThemeSwitch } from '../ThemeSwitch';
+import { ThemeToggle } from '../ThemeToggle';
 import { IHeaderProps } from './Layout.types';
 
 export const Header = ({ theme, onThemeChange }: IHeaderProps) => {
     return (
         <Wrapper>
             <Heading>capture.me</Heading>
-            <ThemeSwitch theme={theme} onChange={onThemeChange}></ThemeSwitch>
+            <ThemeToggle theme={theme} onChange={onThemeChange}></ThemeToggle>
         </Wrapper>
     );
 };
 
 const Wrapper = styled.header`
-    width: 28rem;
+    width: 30rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;

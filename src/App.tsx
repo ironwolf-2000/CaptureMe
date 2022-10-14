@@ -4,14 +4,16 @@ import { Body, Controls, Header, PreviewModal } from './components';
 import { downloadImage, isValidUrl } from './utils';
 import { darkTheme, GlobalStyle, lightTheme } from './assets/styles';
 import { ThemeProvider } from 'styled-components';
-import { Theme } from './components/ThemeSwitch/ThemeSwitch.types';
+import { Theme } from './components/ThemeToggle/ThemeToggle.types';
+
+const THEME_KEY = 'captureMeTheme';
 
 const App = () => {
     const [imageSrc, setImageSrc] = useState<string>('');
     const [isInvalidUrl, setIsInvalidUrl] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
 
-    const [theme, setTheme] = useState(Theme.Dark);
+    const [theme, setTheme] = useState((localStorage.getItem(THEME_KEY) ?? Theme.Light) as Theme);
     const [loading, setLoading] = useState(false);
 
     const handleCapture = async (urlString: string, fullScreen: boolean, width?: number, height?: number) => {
@@ -31,10 +33,15 @@ const App = () => {
         }
     };
 
+    const handleThemeChange = (theme: Theme) => {
+        localStorage.setItem(THEME_KEY, theme);
+        setTheme(theme);
+    };
+
     return (
-        <ThemeProvider theme={theme === Theme.Dark ? darkTheme : lightTheme}>
+        <ThemeProvider theme={theme === Theme.Light ? lightTheme : darkTheme}>
             <GlobalStyle />
-            <Header theme={theme} onThemeChange={setTheme} />
+            <Header theme={theme} onThemeChange={handleThemeChange} />
             <Body>
                 <Controls
                     loading={loading}
