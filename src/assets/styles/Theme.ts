@@ -2,7 +2,7 @@ const common = {
     primary: '#0378fc',
     primaryOverlay: '#3592fd',
     lightGray: '#f3f5f5',
-    error: '#df2935',
+    error: '#ff6047',
 };
 
 export const darkTheme = {

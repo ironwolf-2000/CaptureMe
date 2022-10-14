@@ -44,7 +44,7 @@ const Input = styled(InputBase)<{ hasError: boolean }>`
 
     &::placeholder {
         color: ${({ theme, hasError }) => (hasError ? theme.error : theme.text)};
-        opacity: 1;
+        opacity: ${({ hasError }) => (hasError ? 1 : 0.75)};
     }
 `;
 
