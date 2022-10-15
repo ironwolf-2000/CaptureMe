@@ -16,11 +16,11 @@ const App = () => {
     const [theme, setTheme] = useState((localStorage.getItem(THEME_KEY) ?? Theme.Light) as Theme);
     const [loading, setLoading] = useState(false);
 
-    const handleCapture = async (urlString: string, fullScreen: boolean, width?: number, height?: number) => {
+    const handleCapture = async (urlString: string, fullPage: boolean, width?: number, height?: number) => {
         if (isValidUrl(urlString)) {
             setLoading(true);
             try {
-                const src = await ScreenshotService.loadScreenshot(urlString, fullScreen, width, height);
+                const src = await ScreenshotService.loadScreenshot(urlString, fullPage, width, height);
                 setImageSrc(src);
                 setModalVisible(true);
             } catch (error) {

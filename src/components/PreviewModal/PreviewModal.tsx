@@ -1,12 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { DownloadIcon } from '../../assets/icons';
+import { size } from '../../assets/styles/Size';
+import { useWindowSize } from '../../hooks';
 import { ButtonBase } from '../common';
 import { IImageDimensions, IPreviewModalProps } from './PreviewModal.types';
 
 export const PreviewModal = ({ visible, imageSrc, onClose, onDownload }: IPreviewModalProps) => {
     const [imageDimensions, setImageDimensions] = useState<IImageDimensions>();
     const imageRef = useRef<HTMLImageElement | null>(null);
+
+    const { width } = useWindowSize();
 
     useEffect(() => {
         const img = imageRef.current;
@@ -20,29 +24,31 @@ export const PreviewModal = ({ visible, imageSrc, onClose, onDownload }: IPrevie
 
     return (
         <Wrapper>
-            <ModalContent>
-                <ModalHeader>
-                    <Heading>Your screenshot</Heading>
-                </ModalHeader>
-                <ModalBody>
-                    <ImageContainer>
-                        <Image
-                            ref={imageRef}
-                            src={imageSrc}
-                            alt='screenshot preview'
-                            width={imageDimensions?.width}
-                            height={imageDimensions?.height}
-                        />
-                    </ImageContainer>
-                </ModalBody>
-                <ModalFooter>
-                    <ButtonClose onClick={onClose}>Close</ButtonClose>
-                    <ButtonDownload onClick={onDownload}>
-                        Download
-                        <StyledDownloadIcon />
-                    </ButtonDownload>
-                </ModalFooter>
-            </ModalContent>
+            <Modal>
+                <ModalContent>
+                    <ModalHeader>
+                        <Heading>Your screenshot</Heading>
+                    </ModalHeader>
+                    <ModalBody>
+                        <ImageContainer>
+                            <Image
+                                ref={imageRef}
+                                src={imageSrc}
+                                alt='screenshot preview'
+                                width={imageDimensions?.width}
+                                height={imageDimensions?.height}
+                            />
+                        </ImageContainer>
+                    </ModalBody>
+                    <ModalFooter>
+                        <ButtonClose onClick={onClose}>Close</ButtonClose>
+                        <ButtonDownload onClick={onDownload}>
+                            Download
+                            {width && width >= Number(size.tablet) && <StyledDownloadIcon />}
+                        </ButtonDownload>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
         </Wrapper>
     );
 };
@@ -57,6 +63,11 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+
+const Modal = styled.div`
+    padding: 2rem 0;
+    overflow: visible;
 `;
 
 const ModalContent = styled.div`
@@ -75,16 +86,22 @@ const Heading = styled.h2`
 
 const ModalBody = styled.div`
     padding: 0.25rem 1.5rem;
-    width: 30rem;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+
+    width: 20rem;
+
+    @media only screen and (min-width: ${size.tablet}) {
+        width: 30rem;
+    }
 `;
 
 const ImageContainer = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
-    max-height: 60vh;
+    max-height: 20rem;
     overflow: auto;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0.125rem 0.375rem;
 

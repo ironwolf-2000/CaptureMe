@@ -18,5 +18,5 @@ export interface IControlsProps {
     loading: boolean;
     isInvalidUrl: boolean;
     setIsInvalidUrl: (value: boolean) => void;
-    onCapture: (urlString: string, fullScreen: boolean, width?: number, height?: number) => Promise<void>;
+    onCapture: (urlString: string, fullPage: boolean, width?: number, height?: number) => Promise<void>;
 }

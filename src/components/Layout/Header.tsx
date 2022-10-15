@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { size } from '../../assets/styles/Size';
 import { ThemeToggle } from '../ThemeToggle';
 import { IHeaderProps } from './Layout.types';
 
@@ -18,6 +19,12 @@ const Wrapper = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    width: 20rem;
+
+    @media screen and (min-width: ${size.tablet}) {
+        width: 30rem;
+    }
 `;
 
 const Heading = styled.h1`

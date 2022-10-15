@@ -1,12 +1,16 @@
 import styled, { keyframes } from 'styled-components';
 import { SearchIcon } from '../../assets/icons';
+import { size } from '../../assets/styles/Size';
+import { useWindowSize } from '../../hooks';
 import { ButtonBase, InputBase } from '../common';
 import { ISearchBarProps } from './Controls.types';
 
 export const SearchBar = ({ value, hasError, loading, onChange, onFocus, onCapture }: ISearchBarProps) => {
+    const { width } = useWindowSize();
+
     return (
         <Wrapper>
-            <StyledSearchIcon />
+            {width && width >= parseInt(size.tablet) && <StyledSearchIcon />}
             <Input
                 placeholder={hasError ? 'Invalid URL' : 'Website URL...'}
                 aria-label='website url'
@@ -25,26 +29,36 @@ export const SearchBar = ({ value, hasError, loading, onChange, onFocus, onCaptu
 
 const Wrapper = styled.div`
     background-color: ${({ theme }) => theme.elements};
-    height: 4rem;
     box-sizing: border-box;
-    padding: 0.5rem 0.5rem 0.5rem 1.25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0.25rem 0.75rem;
+
+    padding: 0.25rem;
+    height: 3.5rem;
+
+    @media only screen and (min-width: ${size.tablet}) {
+        padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+        height: 4rem;
+    }
 `;
 
 const Input = styled(InputBase)<{ hasError: boolean }>`
     background: transparent;
     flex-grow: 1;
-    margin-right: 1rem;
-    font-size: 1.1rem;
     padding: 0.5rem;
 
     &::placeholder {
         color: ${({ theme, hasError }) => (hasError ? theme.error : theme.text)};
         opacity: ${({ hasError }) => (hasError ? 1 : 0.75)};
+    }
+
+    margin-right: 0.5rem;
+
+    @media only screen and (min-width: ${size.tablet}) {
+        margin-right: 1rem;
     }
 `;
 

@@ -8,7 +8,7 @@ export class ScreenshotService {
 
     static loadScreenshot = async (
         url: string,
-        fullScreen: boolean,
+        fullPage: boolean,
         width: number = 1920,
         height: number = 1080
     ): Promise<string> => {
@@ -17,7 +17,7 @@ export class ScreenshotService {
                 access_key: process.env.REACT_APP_API_KEY,
                 url,
             },
-            ...(fullScreen ? { full_page: true } : { width, height }),
+            ...(fullPage ? { full_page: true } : { width, height }),
         };
 
         const response = await ScreenshotService.http.get('', { params });
