@@ -34,6 +34,8 @@ export const Controls = ({ loading, isInvalidUrl, setIsInvalidUrl, onCapture }: 
     const handleCapture = async () => {
         await onCapture(urlString, fullPage, width ? Number(width) : undefined, height ? Number(height) : undefined);
         setUrlString('');
+        setWidth('');
+        setHeight('');
     };
 
     return (

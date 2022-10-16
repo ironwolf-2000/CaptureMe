@@ -101,6 +101,7 @@ const ImageContainer = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
+    height: max-content;
     max-height: 20rem;
     overflow: auto;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0.125rem 0.375rem;
@@ -150,7 +151,7 @@ const ButtonDownload = styled(ButtonBase)`
     height: 100%;
     margin-left: 0.5rem;
     border-radius: 1.25rem;
-    padding: 0 0.75rem 0 1rem;
+    padding: 0 1rem;
     background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.lightGray};
     transition: opacity 0.2s;

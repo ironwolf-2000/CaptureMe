@@ -36,7 +36,7 @@ const Wrapper = styled.div`
     border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0.25rem 0.75rem;
 
-    padding: 0.25rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.5rem;
     height: 3.5rem;
 
     @media only screen and (min-width: ${size.tablet}) {
@@ -59,6 +59,7 @@ const Input = styled(InputBase)<{ hasError: boolean }>`
 
     @media only screen and (min-width: ${size.tablet}) {
         margin-right: 1rem;
+        font-size: 1.1rem;
     }
 `;
 
@@ -82,7 +83,6 @@ const CaptureButton = styled(ButtonBase)`
     background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.lightGray};
     height: 100%;
-    font-size: 1.1rem;
     border-radius: 1rem;
     padding: 0 1.25rem;
     transition: opacity 0.2s;
@@ -121,6 +121,10 @@ const CaptureButton = styled(ButtonBase)`
         &:focus-visible {
             outline: 0.125rem dashed ${({ theme }) => theme.text};
         }
+    }
+
+    @media only screen and (min-width: ${size.tablet}) {
+        font-size: 1.1rem;
     }
 `;
 
