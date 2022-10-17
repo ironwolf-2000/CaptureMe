@@ -7,11 +7,7 @@ export const ThemeToggle = ({ theme, onChange }: IThemeToggleProps) => {
         <Wrapper>
             {theme === Theme.Light ? 'Dark' : 'Light'}
             {theme === Theme.Light ? <StyledMoonIcon /> : <StyledSunIcon />}
-            <Toggle
-                type='checkbox'
-                checked={theme === Theme.Dark}
-                onChange={e => onChange(e.target.checked ? Theme.Dark : Theme.Light)}
-            />
+            <Toggle type='checkbox' checked={theme === Theme.Dark} onChange={onChange} />
         </Wrapper>
     );
 };

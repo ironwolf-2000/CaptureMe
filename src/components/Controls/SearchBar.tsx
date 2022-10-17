@@ -49,17 +49,18 @@ const Input = styled(InputBase)<{ hasError: boolean }>`
     background: transparent;
     flex-grow: 1;
     padding: 0.5rem;
+    font-size: 1rem;
+    margin-right: 0.5rem;
 
     &::placeholder {
         color: ${({ theme, hasError }) => (hasError ? theme.error : theme.text)};
         opacity: ${({ hasError }) => (hasError ? 1 : 0.75)};
     }
 
-    margin-right: 0.5rem;
+    width: 12rem;
 
     @media only screen and (min-width: ${size.tablet}) {
-        margin-right: 1rem;
-        font-size: 1.1rem;
+        width: auto;
     }
 `;
 
@@ -84,9 +85,16 @@ const CaptureButton = styled(ButtonBase)`
     color: ${({ theme }) => theme.lightGray};
     height: 100%;
     border-radius: 1rem;
-    padding: 0 1.25rem;
+    padding: 0 1.125rem;
     transition: opacity 0.2s;
     overflow: hidden;
+    font-size: 1rem;
+
+    width: 8rem;
+
+    @media only screen and (min-width: ${size.tablet}) {
+        width: 6rem;
+    }
 
     &:disabled {
         cursor: wait;
@@ -121,10 +129,6 @@ const CaptureButton = styled(ButtonBase)`
         &:focus-visible {
             outline: 0.125rem dashed ${({ theme }) => theme.text};
         }
-    }
-
-    @media only screen and (min-width: ${size.tablet}) {
-        font-size: 1.1rem;
     }
 `;
 

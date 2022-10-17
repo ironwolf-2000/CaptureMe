@@ -34,8 +34,8 @@ const CheckboxElement = styled.input`
 
     &::before {
         content: '';
-        width: 1.1rem;
-        height: 1.1rem;
+        width: 1rem;
+        height: 1rem;
         border-radius: 0.25rem;
         transform: scale(0);
         transition: transform 120ms ease-in-out;

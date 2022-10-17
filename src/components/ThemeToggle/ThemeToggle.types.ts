@@ -5,5 +5,5 @@ export enum Theme {
 
 export interface IThemeToggleProps {
     theme: Theme;
-    onChange: (theme: Theme) => void;
+    onChange: () => void;
 }

@@ -6,5 +6,5 @@ export interface IBodyProps {
 
 export interface IHeaderProps {
     theme: Theme;
-    onThemeChange: (theme: Theme) => void;
+    onThemeChange: () => void;
 }

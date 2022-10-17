@@ -5,16 +5,16 @@ import { downloadImage, isValidUrl } from './utils';
 import { darkTheme, GlobalStyle, lightTheme } from './assets/styles';
 import { ThemeProvider } from 'styled-components';
 import { Theme } from './components/ThemeToggle/ThemeToggle.types';
-
-const THEME_KEY = 'captureMeTheme';
+import { useTheme } from './hooks/useTheme';
 
 const App = () => {
     const [imageSrc, setImageSrc] = useState<string>('');
     const [isInvalidUrl, setIsInvalidUrl] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
 
-    const [theme, setTheme] = useState((localStorage.getItem(THEME_KEY) ?? Theme.Light) as Theme);
     const [loading, setLoading] = useState(false);
+
+    const [theme, toggleTheme] = useTheme();
 
     const handleCapture = async (urlString: string, fullPage: boolean, width?: number, height?: number) => {
         if (isValidUrl(urlString)) {
@@ -33,15 +33,10 @@ const App = () => {
         }
     };
 
-    const handleThemeChange = (theme: Theme) => {
-        localStorage.setItem(THEME_KEY, theme);
-        setTheme(theme);
-    };
-
     return (
         <ThemeProvider theme={theme === Theme.Light ? lightTheme : darkTheme}>
             <GlobalStyle />
-            <Header theme={theme} onThemeChange={handleThemeChange} />
+            <Header theme={theme} onThemeChange={toggleTheme} />
             <Body>
                 <Controls
                     loading={loading}
