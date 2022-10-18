@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { ScreenshotService } from './services/ScreenshotService';
 import { Body, Controls, Header, PreviewModal } from './components';
-import { downloadImage, isValidUrl } from './utils';
+import { isValidUrl } from './utils';
 import { darkTheme, GlobalStyle, lightTheme } from './assets/styles';
 import { ThemeProvider } from 'styled-components';
 import { Theme } from './components/ThemeToggle/ThemeToggle.types';
 import { useTheme } from './hooks/useTheme';
+import { downloadImage } from './helpers/download.helpers';
 
 const App = () => {
     const [imageSrc, setImageSrc] = useState<string>('');
