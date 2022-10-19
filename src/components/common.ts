@@ -7,7 +7,11 @@ export const InputBase = styled.input`
 
     &::placeholder {
         color: ${({ theme }) => theme.text};
-        opacity: 0.75;
+        opacity: 0.5;
+    }
+
+    &:focus::placeholder {
+        opacity: 1;
     }
 `;
 

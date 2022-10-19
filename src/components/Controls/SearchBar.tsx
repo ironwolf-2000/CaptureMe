@@ -27,7 +27,7 @@ export const SearchBar = ({ value, hasError, loading, onChange, onFocus, onCaptu
     );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
     background-color: ${({ theme }) => theme.elements};
     box-sizing: border-box;
     display: flex;
@@ -54,7 +54,7 @@ const Input = styled(InputBase)<{ hasError: boolean }>`
 
     &::placeholder {
         color: ${({ theme, hasError }) => (hasError ? theme.error : theme.text)};
-        opacity: ${({ hasError }) => (hasError ? 1 : 0.75)};
+        opacity: ${({ hasError }) => (hasError ? 1 : 0.65)};
     }
 
     width: 12rem;
