@@ -1,46 +1,95 @@
-# Getting Started with Create React App
+# Capture Me - Take a screenshot of any site
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
 
-## Available Scripts
+-   [Overview](#overview)
+    -   [The idea](#the-idea)
+    -   [Preview](#preview)
+    -   [Links](#links)
+-   [My process](#my-process)
+    -   [Built with](#built-with)
+    -   [What I learned](#what-i-learned)
+    -   [Further improvement](#further-improvement)
+    -   [Useful resources](#useful-resources)
+-   [Author](#author)
+-   [Acknowledgments](#acknowledgments)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+### The idea
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+There are many tools that allow you to take screenshots of websites, but most of them are cluttered with a lot of extra details that do not add value to the tool itself.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+That's why I decided to build something simple, yet functional. In fact, I used my application to take the screeshot you see below.
 
-### `npm test`
+### Preview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Website preview](./images/capture-me.jpeg)
 
-### `npm run build`
+### Links
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   [Live Site URL](https://capture-me-nine.vercel.app/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## My process
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Built with
 
-### `npm run eject`
+-   Mobile-first workflow
+-   [Typescript](https://www.typescriptlang.org/) a superset of JavaScript that adds optional static typing
+-   [React](https://reactjs.org/) - JS library
+-   [Create React App](https://create-react-app.dev/) - React meta framework
+-   [Axios](https://axios-http.com/) - JS library used to make HTTP requests
+-   [Styled Components](https://styled-components.com/) - For styles
+-   [API Flash](https://apiflash.com/) - Screenshot API
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### What I learned
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+First of all, I learned to better structure my projects. That is, I found a way to organize folders and files in the most intuitive way for me. In the [acknowledgements] section, there are a couple of posts that inspired me.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Here is a quick overview of other things I got better at:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-   Styled components
+    -   Using with typescript
+    -   Variables
+    -   Theming
+    -   Animations
+-   Create React App
+    -   Working with environment variables
+-   API
+    -   Working with Axios to make requests
+    -   Receiving and managing blob type
+-   Accessibility
+    -   Understanding principles of a11y
+    -   Creating support for keyboard-only users
+-   Other
+    -   Creating custom hooks like `useTheme`
 
-## Learn More
+### Further improvement
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Even though the app works and is fully accessible, there is still room for improvement.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+For instance:
+
+-   I could add more animations (e.g., for the modal or for the theme toggle);
+-   Write some unit tests.
+
+However, none of this would add anything new to the functionality itself, so I'll leave it for now.
+
+### Useful resources
+
+-   [Image Color Picker](https://imagecolorpicker.com/) - This tool helps me to pick the color code from the image. I use it to get a color palette from a certain image.
+-   [Coolors](https://coolors.co/) - This is an amazing color palette generator. It is also very useful for finding different shades of the same color.
+-   [Feather Icons](https://feathericons.com/) - A collection of beautiful minimalist icons.
+-   [Accessibility course](https://web.dev/learn/accessibility/) - This resource helped me better understand digital accessibility.
+
+## Author
+
+-   LinkedIn - [@ironwolf2000](https://linkedin.com/in/ironwolf2000)
+-   Second GitHub account - [@Bonrey](https://github.com/bonrey)
+-   Frontend Mentor - [@Bonrey](https://www.frontendmentor.io/profile/Bonrey)
+
+## Acknowledgments
+
+-   [Project Structure from Web Dev Simplified](https://blog.webdevsimplified.com/2022-07/react-folder-structure/)
+-   [Project Structure from Josh Comeau](https://www.joshwcomeau.com/react/file-structure/)
+-   [How to create a loading button animation from Bedimcode](https://www.youtube.com/watch?v=ZaKXVsfIG6g&t=3s)
