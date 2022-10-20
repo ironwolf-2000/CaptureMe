@@ -8,11 +8,11 @@
     -   [Links](#links)
 -   [My process](#my-process)
     -   [Built with](#built-with)
-    -   [What I learned](#what-i-learned)
-    -   [Further improvement](#further-improvement)
+    -   [Areas of improvement](#areas-of-improvement)
+    -   [Further development](#further-development)
     -   [Useful resources](#useful-resources)
 -   [Author](#author)
--   [Acknowledgments](#acknowledgments)
+-   [Acknowledgements](#acknowledgements)
 
 ## Overview
 
@@ -20,7 +20,7 @@
 
 There are many tools that allow you to take screenshots of websites, but most of them are cluttered with a lot of extra details that do not add value to the tool itself.
 
-That's why I decided to build something simple, yet functional. In fact, I used my application to take the screeshot you see below.
+This is why I decided to build something simple, yet functional. In fact, I used my application to take the screeshot you see below.
 
 ### Preview
 
@@ -35,14 +35,14 @@ That's why I decided to build something simple, yet functional. In fact, I used 
 ### Built with
 
 -   Mobile-first workflow
--   [Typescript](https://www.typescriptlang.org/) a superset of JavaScript that adds optional static typing
+-   [Typescript](https://www.typescriptlang.org/) - a superset of JavaScript that adds optional static typing
 -   [React](https://reactjs.org/) - JS library
 -   [Create React App](https://create-react-app.dev/) - React meta framework
 -   [Axios](https://axios-http.com/) - JS library used to make HTTP requests
 -   [Styled Components](https://styled-components.com/) - For styles
 -   [API Flash](https://apiflash.com/) - Screenshot API
 
-### What I learned
+### Areas of improvement
 
 First of all, I learned to better structure my projects. That is, I found a way to organize folders and files in the most intuitive way for me. In the [acknowledgements] section, there are a couple of posts that inspired me.
 
@@ -64,14 +64,14 @@ Here is a quick overview of other things I got better at:
 -   Other
     -   Creating custom hooks like `useTheme`
 
-### Further improvement
+### Further development
 
 Even though the app works and is fully accessible, there is still room for improvement.
 
 For instance:
 
--   I could add more animations (e.g., for the modal or for the theme toggle);
--   Write some unit tests.
+-   Adding more animations (e.g., for the modal or for the theme toggle)
+-   Writing some unit tests (to make sure that the code works correctly)
 
 However, none of this would add anything new to the functionality itself, so I'll leave it for now.
 
@@ -88,7 +88,7 @@ However, none of this would add anything new to the functionality itself, so I'l
 -   Second GitHub account - [@Bonrey](https://github.com/bonrey)
 -   Frontend Mentor - [@Bonrey](https://www.frontendmentor.io/profile/Bonrey)
 
-## Acknowledgments
+## Acknowledgements
 
 -   [Project Structure from Web Dev Simplified](https://blog.webdevsimplified.com/2022-07/react-folder-structure/)
 -   [Project Structure from Josh Comeau](https://www.joshwcomeau.com/react/file-structure/)
